@@ -1,0 +1,108 @@
+Git初始化及仓库创建和操作
+
+基本信息设置
+1.设置用户名
+git config --global user.name 'hanxiaoya'
+2.设置用户名邮箱
+git config --global user.name '1229960773@qq.com'
+注意：该设置在github仓库主页显示谁提交了该文件
+
+----------------------------------------------
+ls
+pwd  显示当前位置
+git commit -m ‘提交描述'    提交操作
+
+
+
+
+---------Git本地仓库操作（工作区—》暂存区—》Git仓库）
+初始化一个新的Git仓库
+1.创建文件夹
+mkdir test
+2.在文件内初始化git（创建git仓库）
+cd test
+git init
+
+touch a1.php
+(rm a1.php)
+(按esc):wq
+
+git status
+
+将文件从工作区添加到暂存区
+git add a1.txt
+git status
+
+将文件从暂存区提交到仓库
+git commit -m 'add a1.txt'
+git status
+
+修改仓库文件
+git status
+vi a1.txt
+cat a1.txt
+
+删除仓库文件
+rm a1.txt   删除文件
+git rm a1.txt  从git中删除文件
+
+3.查看设置
+git config --list
+
+
+-----------Git远程仓库
+作用：备份、共享
+	
+Git克隆操作
+目的：将远程仓库（github对应的项目）复制到本地
+git clone 仓库地址
+git config --list
+
+创建文件
+touch a1.txt
+
+将工作区文件添加到暂存区
+git add a1.txt
+
+将暂存区文件添加到git仓库
+git commit -m '添加到Git仓库'
+
+把本地仓库同步到远程仓库
+git push
+
+----------------------------------------
+为什么无法同步
+或没有权限
+The requested URL returned error：403 Forbidden while accessing
+
+答案：私有项目，没有权限，输入用户名密码；
+或者远程地址采用这种类型：
+vi .git/config
+#[remote “origin”]
+url=https://github.com/用户名/仓库名.git
+修改为:
+[remote “origin”]
+url=https://用户名：密码@github.com/用户名.仓库名.git
+
+----------------------Github Pages 搭建网站
+个人博客
+访问   https://用户名.github.io
+
+搭建步骤
+1.创建个人站点  —》新建仓库（注：仓库名必须是[用户名.github.io]）
+2.在仓库下新建index.html的文件即可
+
+注意：
+github pages 仅支持静态网页，仓库里面只能是.html文件
+
+Project Pages 项目站点
+https://用户名.github.io/仓库名
+搭建步骤
+1.进入项目主页，点击settings
+2.在settigns页面，GitHub Pages下点击【Choose a theme】来自动生成主题页面
+3.新建站点基础信息设置
+4.选择主题
+5.生成网页
+
+
+
